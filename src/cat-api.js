@@ -16,7 +16,6 @@ export async function fetchBreeds() {
     const breeds = response.data;
     return breeds;
   } catch (error) {
-    error();
     console.error('Error fetching breeds:', error);
     return [];
   }
@@ -37,14 +36,7 @@ export async function fetchCatByBreed(breedId) {
     const selectedBreeds = response.data;
     return selectedBreeds;
   } catch (error) {
-    error();
     console.error('Error fetching breeds:', error);
     return [];
   }
-}
-
-function errorHere() {
-  Notiflix.Notify.failure(
-    'Oops! Something went wrong! Try reloading the page!'
-  );
 }

@@ -1,4 +1,4 @@
-import { fetchBreeds, fetchCatByBreed, errorHere } from './cat-api.js';
+import { fetchBreeds, fetchCatByBreed } from './cat-api.js';
 import Notiflix from 'notiflix';
 
 const breedSelect = document.querySelector('.breed-select');
@@ -16,7 +16,9 @@ async function breedListOption() {
     breedSelect.insertAdjacentHTML('beforeend', breedsOption);
     catLoader.classList.add('is-hidden');
   } catch (error) {
-    errorHere();
+    Notiflix.Notify.failure(
+      'Oops! Something went wrong! Try reloading the page!'
+    );
     console.error('Error fetching breeds:', error);
   }
 }
@@ -44,7 +46,9 @@ breedSelect.addEventListener('change', async e => {
     catLoader.classList.add('is-hidden');
     Notiflix.Notify.success('Success fetching data');
   } catch (error) {
-    errorHere();
+    Notiflix.Notify.failure(
+      'Oops! Something went wrong! Try reloading the page!'
+    );
     console.error('Error fetching breeds:', error);
   }
 });
